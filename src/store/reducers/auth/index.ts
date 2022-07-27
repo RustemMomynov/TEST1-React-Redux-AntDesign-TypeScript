@@ -21,6 +21,7 @@ export default function auth(
       return { ...state, isLoading: action.payload };
     case AuthActionEnum.SET_ERROR:
       return { ...state, error: action.payload, isLoading: false };
+
     default:
       return state;
   }
