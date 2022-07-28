@@ -7,8 +7,6 @@ import { AuthActionCreators } from "../store/reducers/auth/action-creators";
 import { rules } from "../utils/rules";
 
 const LoginForm: FC = () => {
-  const dispatch = useDispatch();
-
   const { error, isLoading } = useTypedSelector((state) => state.auth);
 
   const [username, setUserName] = useState("");
