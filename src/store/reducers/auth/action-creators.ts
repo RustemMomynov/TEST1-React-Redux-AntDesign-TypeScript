@@ -2,6 +2,7 @@ import axios from "axios";
 import { AnyAction } from "redux";
 import { ThunkAction } from "redux-thunk";
 import { AppDispatch, RootState } from "../..";
+import UserService from "../../../api/UserService";
 import { IUser } from "../../../models/IUser";
 import {
   AuthAction,
@@ -38,7 +39,7 @@ export const AuthActionCreators = {
       try {
         dispatch(AuthActionCreators.setIsLoading(true));
         setTimeout(async () => {
-          const response = await axios.get<IUser[]>("./users.json");
+          const response = await UserService.getUsers();
           const mockUsers = response.data.find(
             (user) => user.username === username && user.password === password
           );
