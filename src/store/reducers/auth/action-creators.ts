@@ -46,8 +46,8 @@ export const AuthActionCreators = {
           if (mockUsers) {
             localStorage.setItem("auth", "true");
             localStorage.setItem("username", mockUsers.username);
-            dispatch(AuthActionCreators.setIsAuth(true));
             dispatch(AuthActionCreators.setUser(mockUsers));
+            dispatch(AuthActionCreators.setIsAuth(true));
             console.log("done");
           } else {
             dispatch(

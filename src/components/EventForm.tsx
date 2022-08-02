@@ -11,7 +11,7 @@ const { Option } = Select;
 
 interface EventFormProps {
   guests: IUser[];
-  sumbit: (event: IEvent) => void;
+  submit: (event: IEvent) => void;
 }
 
 const EventForm: FC<EventFormProps> = (props) => {
@@ -31,7 +31,7 @@ const EventForm: FC<EventFormProps> = (props) => {
   };
 
   const submitForm = () => {
-    props.sumbit({ ...event, author: user.username });
+    props.submit({ ...event, author: user.username });
   };
 
   return (
@@ -43,7 +43,10 @@ const EventForm: FC<EventFormProps> = (props) => {
       <Form.Item
         label="Описание события"
         name="discription"
-        rules={[rules.required()]}
+        rules={[
+          rules.required(),
+          rules.isDateAfter("Нельзя создать событие в прошлом"),
+        ]}
       >
         <Input
           onChange={(e) => setEvent({ ...event, discription: e.target.value })}
