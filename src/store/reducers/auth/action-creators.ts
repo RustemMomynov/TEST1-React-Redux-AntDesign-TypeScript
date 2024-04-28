@@ -39,10 +39,12 @@ export const AuthActionCreators = {
       try {
         dispatch(AuthActionCreators.setIsLoading(true));
         setTimeout(async () => {
-          const response = await UserService.getUsers();
-          const mockUsers = response.data.find(
+          const users = await UserService.getUsers();
+          console.log(users);
+          const mockUsers = users.find(
             (user) => user.username === username && user.password === password
           );
+
           if (mockUsers) {
             localStorage.setItem("auth", "true");
             localStorage.setItem("username", mockUsers.username);

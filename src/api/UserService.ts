@@ -1,8 +1,12 @@
-import axios, { AxiosResponse } from "axios";
 import { IUser } from "../models/IUser";
 
 export default class UserService {
-  static async getUsers(): Promise<AxiosResponse<IUser[]>> {
-    return axios.get<IUser[]>("./users.json");
+  static getUsers(): IUser[] {
+    return [
+      { username: "user", password: "123" },
+      { username: "admin", password: "123" },
+      { username: "Rustem", password: "123" },
+      { username: "Sultan", password: "123" },
+    ];
   }
 }
